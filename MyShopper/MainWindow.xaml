@@ -1,0 +1,79 @@
+﻿<Window x:Class="MyShopper.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Width="1366" Height="768" WindowState="Maximized">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="71*"/>
+            <ColumnDefinition Width="608*"/>
+        </Grid.ColumnDefinitions>
+        <TabControl Grid.ColumnSpan="2">
+            <TabItem Header="Receipts">
+                <StackPanel Orientation="Vertical" Name="ReceiptPanel">
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal" Height="30">
+                                <Label Content="Store Name:"/>
+                                <TextBox TextWrapping="Wrap" Width="120" Name="TextBoxStore"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Height="30">
+                                <Label Content="Date of receipt"/>
+                                <TextBox Width="30" Name="TextBoxMonth" Height="30" IsEnabled="False"/>
+                                <Label Content="/"/>
+                                <TextBox Width="30" Name="TextBoxDay" Height="30" IsEnabled="False"/>
+                                <Label Content="/"/>
+                                <TextBox Width="60" Name="TextBoxYear" Height="30" IsEnabled="False"/>
+                                <Label Content="Time of receipt"/>
+                                <TextBox Width="30" Name="TextBoxHour" Height="30" IsEnabled="False"/>
+                                <Label Content=":"/>
+                                <TextBox Width="30" Name="TextBoxMinute" Height="30" IsEnabled="False"/>
+                                <Label Content=":"/>
+                                <TextBox Width="30" Name="TextBoxSecond" Height="30" IsEnabled="False"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Height="30">
+                        <Label Content="Brand:"/>
+                        <TextBox TextWrapping="Wrap" Width="200" Name="TextBoxBrand" TextChanged="FilterResults_TextChanged"/>
+                        <Label Content="Item:"/>
+                        <TextBox TextWrapping="Wrap" Width="200" Name="TextBoxItem" TextChanged="FilterResults_TextChanged"/>
+                        <Label Content="Price: $"/>
+                        <TextBox TextWrapping="Wrap" Width="60" Name="TextBoxPrice" TextChanged="FilterResults_TextChanged"/>
+                        <Label Content="Quantity:"/>
+                        <TextBox TextWrapping="Wrap" Width="60" Name="TextBoxQuantity" TextChanged="FilterResults_TextChanged"/>
+                        <Label Content="Unit:"/>
+                        <TextBox TextWrapping="Wrap" Width="120" Name="TextBoxUnit" TextChanged="FilterResults_TextChanged"/>
+                        <Button Margin="12,0,5,0" Name="ButtonAddItem" Click="AddItemBtn_Click">+ Add Item</Button>
+                        <Button Name="ClearItemBtn" Click="ClearItemBtn_Click_1"> Clear </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Products:"/>
+                        <Label Margin="443,0,0,0" Content="Current Receipt:"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <ListBox Name="ListBoxFilteredReceipts" Width="500" Height="560" SelectionChanged="FilteredReceipts_SelectionChanged"/>
+                        <ListBox Name="ListBoxCurrentReceipt" Width="700" Height="560" SelectionChanged="CurrentReceipt_SelectionChanged"/>
+                        <StackPanel Orientation="Vertical">
+                            <Button Content="Save Receipt" IsEnabled="False" Name="ButtonSave" Click="SaveBTN_Click"/>
+                            <Button Content="Clear Receipt" IsEnabled="False" Name="ButtonClearReceipt" Click="ClearReceiptBtn_Click"/>
+                            <Button Content="Delete Selected" IsEnabled="False" Name="ButtonDeletedSelected" Click="DeletedSelectedBtn_Click"/>
+                            <Button Content="Edit Selected" IsEnabled="False" Name="ButtonEditSelected" Click="EditSelectedBtn_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Build a shopping list" IsEnabled="False">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Search:"/>
+                        <TextBox Name="TextBoxSearch" Width="100"/>
+                        <Button Content="Search" Name="ButtonSearch" Click="SearchBTN_Click"/>
+                    </StackPanel>
+                    <TextBox Name="TextBoxShoppingCart"/>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Tab 3" IsEnabled="False">
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

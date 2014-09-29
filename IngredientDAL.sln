@@ -1,0 +1,67 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IngredientDAL", "IngredientDAL\IngredientDAL.csproj", "{43B660DE-4A0E-4656-9681-BA874A30E3D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyShopper", "MyShopper\MyShopper.csproj", "{10DE8551-E54B-469A-9B8B-5C9516AC24A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{414DEFB7-B8CC-4806-BEC6-1BAB03261E82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumCrawler", "SeleniumCrawler\SeleniumCrawler.csproj", "{EFCAD023-DA70-4DBB-A460-A6CC0317D574}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotTowel", "MvcApplication1\HotTowel.csproj", "{FCD0679F-31B7-4FD7-BEC8-0F1FBE04B918}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://jsweitzercatalyst.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = IngredientDAL\\IngredientDAL.csproj
+		SccProjectName1 = IngredientDAL
+		SccLocalPath1 = IngredientDAL
+		SccProjectUniqueName2 = MvcApplication1\\HotTowel.csproj
+		SccProjectName2 = MvcApplication1
+		SccLocalPath2 = MvcApplication1
+		SccProjectUniqueName3 = MyShopper\\MyShopper.csproj
+		SccProjectName3 = MyShopper
+		SccLocalPath3 = MyShopper
+		SccProjectUniqueName4 = SeleniumCrawler\\SeleniumCrawler.csproj
+		SccProjectName4 = SeleniumCrawler
+		SccLocalPath4 = SeleniumCrawler
+		SccProjectUniqueName5 = UnitTests\\UnitTests.csproj
+		SccProjectName5 = UnitTests
+		SccLocalPath5 = UnitTests
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{43B660DE-4A0E-4656-9681-BA874A30E3D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43B660DE-4A0E-4656-9681-BA874A30E3D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43B660DE-4A0E-4656-9681-BA874A30E3D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43B660DE-4A0E-4656-9681-BA874A30E3D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10DE8551-E54B-469A-9B8B-5C9516AC24A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10DE8551-E54B-469A-9B8B-5C9516AC24A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10DE8551-E54B-469A-9B8B-5C9516AC24A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10DE8551-E54B-469A-9B8B-5C9516AC24A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{414DEFB7-B8CC-4806-BEC6-1BAB03261E82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{414DEFB7-B8CC-4806-BEC6-1BAB03261E82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{414DEFB7-B8CC-4806-BEC6-1BAB03261E82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{414DEFB7-B8CC-4806-BEC6-1BAB03261E82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFCAD023-DA70-4DBB-A460-A6CC0317D574}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFCAD023-DA70-4DBB-A460-A6CC0317D574}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFCAD023-DA70-4DBB-A460-A6CC0317D574}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFCAD023-DA70-4DBB-A460-A6CC0317D574}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCD0679F-31B7-4FD7-BEC8-0F1FBE04B918}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCD0679F-31B7-4FD7-BEC8-0F1FBE04B918}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCD0679F-31B7-4FD7-BEC8-0F1FBE04B918}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCD0679F-31B7-4FD7-BEC8-0F1FBE04B918}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
