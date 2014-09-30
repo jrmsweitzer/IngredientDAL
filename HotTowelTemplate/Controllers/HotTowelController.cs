@@ -1,6 +1,6 @@
 using System.Web.Mvc;
 
-namespace MvcApplication1.Controllers
+namespace HotTowelTemplate.Controllers
 {
     public class HotTowelController : Controller
     {

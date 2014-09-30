@@ -1,8 +1,8 @@
 using System.Web.Http;
 
 [assembly: WebActivator.PreApplicationStartMethod(
-    typeof(MvcApplication1.App_Start.BreezeWebApiConfig), "RegisterBreezePreStart")]
-namespace MvcApplication1.App_Start {
+    typeof(HotTowelTemplate.App_Start.BreezeWebApiConfig), "RegisterBreezePreStart")]
+namespace HotTowelTemplate.App_Start {
   ///<summary>
   /// Inserts the Breeze Web API controller route at the front of all Web API routes
   ///</summary>

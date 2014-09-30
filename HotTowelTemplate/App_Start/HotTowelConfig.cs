@@ -2,9 +2,9 @@ using System;
 using System.Web.Optimization;
 
 [assembly: WebActivator.PostApplicationStartMethod(
-    typeof(MvcApplication1.App_Start.HotTowelConfig), "PreStart")]
+    typeof(HotTowelTemplate.App_Start.HotTowelConfig), "PreStart")]
 
-namespace MvcApplication1.App_Start
+namespace HotTowelTemplate.App_Start
 {
     public static class HotTowelConfig
     {

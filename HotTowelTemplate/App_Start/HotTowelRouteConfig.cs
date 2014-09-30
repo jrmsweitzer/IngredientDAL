@@ -1,9 +1,9 @@
 using System.Web.Mvc;
 
 [assembly: WebActivator.PreApplicationStartMethod(
-    typeof(MvcApplication1.App_Start.HotTowelRouteConfig), "RegisterHotTowelPreStart", Order = 2)]
+    typeof(HotTowelTemplate.App_Start.HotTowelRouteConfig), "RegisterHotTowelPreStart", Order = 2)]
 
-namespace MvcApplication1.App_Start {
+namespace HotTowelTemplate.App_Start {
   ///<summary>
   /// Inserts the HotTowel SPA sample view controller to the front of all MVC routes
   /// so that the HotTowel SPA sample becomes the default page.

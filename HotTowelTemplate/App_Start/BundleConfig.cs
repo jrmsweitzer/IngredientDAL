@@ -1,7 +1,7 @@
 using System;
 using System.Web.Optimization;
 
-namespace MvcApplication1
+namespace HotTowelTemplate
 {
     public class BundleConfig
     {
