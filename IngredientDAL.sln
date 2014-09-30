@@ -13,28 +13,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumCrawler", "Selenium
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotTowel", "MvcApplication1\HotTowel.csproj", "{FCD0679F-31B7-4FD7-BEC8-0F1FBE04B918}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{952FC33F-8B62-4AA1-BC60-2B6C53A36CF6}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 6
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://jsweitzercatalyst.visualstudio.com/defaultcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = IngredientDAL\\IngredientDAL.csproj
-		SccProjectName1 = IngredientDAL
-		SccLocalPath1 = IngredientDAL
-		SccProjectUniqueName2 = MvcApplication1\\HotTowel.csproj
-		SccProjectName2 = MvcApplication1
-		SccLocalPath2 = MvcApplication1
-		SccProjectUniqueName3 = MyShopper\\MyShopper.csproj
-		SccProjectName3 = MyShopper
-		SccLocalPath3 = MyShopper
-		SccProjectUniqueName4 = SeleniumCrawler\\SeleniumCrawler.csproj
-		SccProjectName4 = SeleniumCrawler
-		SccLocalPath4 = SeleniumCrawler
-		SccProjectUniqueName5 = UnitTests\\UnitTests.csproj
-		SccProjectName5 = UnitTests
-		SccLocalPath5 = UnitTests
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
