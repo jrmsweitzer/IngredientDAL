@@ -8,13 +8,13 @@ namespace UnitTests
     [TestClass]
     public class RecipeTests : TestConstants
     {
-        private IngredientController _controller;
+        private RobotController _controller;
 
         [TestInitialize]
         public void Setup()
         {
             var context = new FakeIngredientContext();
-            _controller = new IngredientController(context);
+            _controller = new RobotController(context);
         }
 
         [TestMethod]

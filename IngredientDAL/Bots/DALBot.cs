@@ -212,15 +212,18 @@ namespace IngredientDAL.Bots
 
         internal Refrigerator GetRefrigerator()
         {
+            if (_db.Refrigerator.Count() == 0)
+            {
+                _db.Refrigerator.Add(new Refrigerator());
+                _db.SaveChanges();
+            }
             return _db.Refrigerator.FirstOrDefault();
         }
 
 
         internal List<RefrigeratedProduct> GetAllProductsInFridge()
         {
-            return _db.ProductsInFridge.Where(
-                i => i.RefrigeratorId == GetRefrigerator().RefrigeratorId)
-                .ToList();
+            return _db.ProductsInFridge.ToList();
         }
 
         internal Refrigerator StartNewRefrigerator()

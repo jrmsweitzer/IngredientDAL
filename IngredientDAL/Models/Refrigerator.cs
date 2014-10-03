@@ -8,5 +8,10 @@ namespace IngredientDAL.Models
 
         public virtual ICollection<RefrigeratedProduct> ProductsInFridge 
         { get; set; }
+
+        public Refrigerator()
+        {
+            ProductsInFridge = new List<RefrigeratedProduct>();
+        }
     }
 }
