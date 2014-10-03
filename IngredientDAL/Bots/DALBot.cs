@@ -90,7 +90,7 @@ namespace IngredientDAL.Bots
         {
             Product product;
             var prodInDb = 
-                IngredientController.PRODUCTS
+                RobotController.PRODUCTS
                     .FirstOrDefault(i => i.IngredientId == ingredient.IngredientId &&
                                          i.BrandName == brandName &&
                                          i.ProductUnit == unit &&

@@ -10,13 +10,13 @@ namespace IngredientDAL.Bots
     {
         internal List<Ingredient> SortIngredientsByIngredientName()
         {
-            return IngredientController.INGREDIENTS
+            return RobotController.INGREDIENTS
                 .OrderBy(i => i.IngredientName).ToList();
         }
 
         internal List<Product> SortProductsByIngredientName()
         {
-            return IngredientController.PRODUCTS
+            return RobotController.PRODUCTS
                 .OrderBy(i => i.Ingredient.IngredientName).ToList();
         }
 
@@ -27,37 +27,37 @@ namespace IngredientDAL.Bots
 
         internal List<ReceiptItem> SortReceiptsByIngredientName()
         {
-            return IngredientController.RECEIPT
+            return RobotController.RECEIPT
                 .OrderBy(i => i.Product.Ingredient.IngredientName).ToList();
         }
 
         internal List<ReceiptItem> SortReceiptsByBrandName()
         {
-            return IngredientController.RECEIPT
+            return RobotController.RECEIPT
                 .OrderBy(i => i.Product.BrandName).ToList();
         }
 
         internal List<ReceiptItem> SortReceiptsByPrice()
         {
-            return IngredientController.RECEIPT
+            return RobotController.RECEIPT
                 .OrderBy(i => i.IngredientPrice).ToList();
         }
 
         internal Ingredient FindIngredientByName(string ingredientName)
         {
-            return IngredientController.INGREDIENTS.FirstOrDefault(i => 
+            return RobotController.INGREDIENTS.FirstOrDefault(i => 
                 i.IngredientName.Equals(ingredientName));
         }
 
         internal Product FindProductByIngredientName(string ingredientName)
         {
-            return IngredientController.PRODUCTS.FirstOrDefault(i =>
+            return RobotController.PRODUCTS.FirstOrDefault(i =>
                 i.Ingredient.IngredientName.Equals(ingredientName));
         }
 
         internal Product FindProductByBrandName(string brandName)
         {
-            return IngredientController.PRODUCTS.FirstOrDefault(i =>
+            return RobotController.PRODUCTS.FirstOrDefault(i =>
                 i.BrandName.Equals(brandName));
         }
 

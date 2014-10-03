@@ -72,7 +72,7 @@
     <Compile Include="Bots\DALBot.cs" />
     <Compile Include="Bots\RecipeBot.cs" />
     <Compile Include="Bots\SearchBot.cs" />
-    <Compile Include="Controllers\IngredientController.cs" />
+    <Compile Include="Controllers\RobotController.cs" />
     <Compile Include="DAL\FakeDbSet.cs" />
     <Compile Include="DAL\FakeIngredientContext.cs" />
     <Compile Include="DAL\IIngredientContext.cs" />

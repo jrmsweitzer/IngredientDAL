@@ -20,7 +20,7 @@ namespace IngredientDAL.Controllers
      * The controller takes care of all of our robot classes, and distributes
      * the method calls appropriately.
      * */
-    public class IngredientController
+    public class RobotController
     {
         //DALBot - handles any and all database calls
         private DalBot _dalbot;
@@ -42,7 +42,7 @@ namespace IngredientDAL.Controllers
         /**
          * Our default constructor
          * */
-        public IngredientController()
+        public RobotController()
         {
             Initialize(new IngredientContext());
         }
@@ -51,7 +51,7 @@ namespace IngredientDAL.Controllers
          * Our constructor used for mocking. Just pass in a new 
          * FakeIngredientContext()
          * */
-        public IngredientController(IIngredientContext context)
+        public RobotController(IIngredientContext context)
         {
             Initialize(context);
         }
@@ -113,7 +113,7 @@ namespace IngredientDAL.Controllers
         /**
          * Allows us to add an ingredient using the ingredient name
          * */
-        public IngredientController AddIngredient(string ingredientName, 
+        public RobotController AddIngredient(string ingredientName, 
             out Ingredient ingredient)
         {
             ingredient = _dalbot.AddIngredient(ingredientName);
@@ -121,13 +121,13 @@ namespace IngredientDAL.Controllers
             return this;
         }
 
-        public IngredientController AddIngredient(string ingredientName)
+        public RobotController AddIngredient(string ingredientName)
         {
             Ingredient ingredient;
             return AddIngredient(ingredientName, out ingredient);
         }
 
-        public IngredientController AddProductToFridge(Product prSugar,
+        public RobotController AddProductToFridge(Product prSugar,
             DateTime expirationDate,
             out RefrigeratedProduct productInFridge)
         {
@@ -136,7 +136,7 @@ namespace IngredientDAL.Controllers
             return this;
         }
 
-        public IngredientController AddProductToFridge(Product prSugar, 
+        public RobotController AddProductToFridge(Product prSugar, 
             DateTime expirationDate)
         {
             RefrigeratedProduct productInFridge;
@@ -147,7 +147,7 @@ namespace IngredientDAL.Controllers
         /**
          * Allows us to add a product using the ingredient name
          * */
-        public IngredientController AddProduct(string ingredientName, 
+        public RobotController AddProduct(string ingredientName, 
             string brandName, int productQuantity, string productUnits,
             out Product product)
         {
@@ -158,7 +158,7 @@ namespace IngredientDAL.Controllers
             return this;
         }
 
-        public IngredientController AddProduct(string ingredientName,
+        public RobotController AddProduct(string ingredientName,
             string brandName, int productQuantity, string productUnits)
         {
             Product product;
@@ -169,7 +169,7 @@ namespace IngredientDAL.Controllers
         /**
          * Allows us to add a product using the ingredient class
          * */
-        public IngredientController AddProduct(Ingredient ingredient, 
+        public RobotController AddProduct(Ingredient ingredient, 
             string brandName, int productQuantity, string productUnits,
             out Product product)
         {
@@ -180,7 +180,7 @@ namespace IngredientDAL.Controllers
             return this;
         }
 
-        public IngredientController AddProduct(Ingredient ingredient,
+        public RobotController AddProduct(Ingredient ingredient,
             string brandName, int productQuantity, string productUnits)
         {
             Product product;
@@ -192,7 +192,7 @@ namespace IngredientDAL.Controllers
          * Allows us to add a receipt using the ingredient name, and strings
          * for the product details.
          * */
-        public IngredientController AddReceiptItem(string ingredientName, 
+        public RobotController AddReceiptItem(string ingredientName, 
             string brandName, int productQuantity, string productUnits, 
             string storeName, DateTime dateOfReceipt, double priceOfProduct,
             out ReceiptItem receiptItem)
@@ -206,7 +206,7 @@ namespace IngredientDAL.Controllers
             return this;
         }
 
-        public IngredientController AddReceiptItem(string ingredientName,
+        public RobotController AddReceiptItem(string ingredientName,
             string brandName, int productQuantity, string productUnits,
             string storeName, DateTime dateOfReceipt, double priceOfProduct)
         {
@@ -219,7 +219,7 @@ namespace IngredientDAL.Controllers
         /**
          * Allows us to add a receipt using the product class
          * */
-        public IngredientController AddReceiptItem(Product product,
+        public RobotController AddReceiptItem(Product product,
             string storeName, DateTime dateOfReceipt, double priceOfProduct,
             out ReceiptItem receiptItem)
         {
@@ -231,7 +231,7 @@ namespace IngredientDAL.Controllers
             return this;
         }
 
-        public IngredientController AddReceiptItem(Product product,
+        public RobotController AddReceiptItem(Product product,
             string storeName, DateTime dateOfReceipt, double priceOfProduct)
         {
             ReceiptItem receiptItem;
@@ -243,7 +243,7 @@ namespace IngredientDAL.Controllers
          * Allows us to add a receipt using the ingredient class, and strings
          * for the product details.
          * */
-        public IngredientController AddReceiptItem(Ingredient ingredient,
+        public RobotController AddReceiptItem(Ingredient ingredient,
             string brandName, int productQuantity, string productUnits,
             string storeName, DateTime dateOfReceipt, double priceOfProduct,
             out ReceiptItem receiptItem)
@@ -257,7 +257,7 @@ namespace IngredientDAL.Controllers
             return this;
         }
 
-        public IngredientController AddReceiptItem(Ingredient ingredient,
+        public RobotController AddReceiptItem(Ingredient ingredient,
             string brandName, int productQuantity, string productUnits,
             string storeName, DateTime dateOfReceipt, double priceOfProduct)
         {
@@ -270,7 +270,7 @@ namespace IngredientDAL.Controllers
         /**
          * Allows us to add a new Recipe.
          * */
-        public IngredientController AddRecipe(string recipeName,
+        public RobotController AddRecipe(string recipeName,
             out Recipe recipe)
         {
             recipe = _dalbot.AddRecipe(recipeName);
@@ -278,7 +278,7 @@ namespace IngredientDAL.Controllers
             return this;
         }
 
-        public IngredientController AddRecipe(string recipeName)
+        public RobotController AddRecipe(string recipeName)
         {
             Recipe recipe;
             return AddRecipe(recipeName, out recipe);
@@ -287,7 +287,7 @@ namespace IngredientDAL.Controllers
         /**
          * Allows us to add a new step to an already-defined recipe
          * */
-        public IngredientController AddStep(Recipe recipe, int stepNum, 
+        public RobotController AddStep(Recipe recipe, int stepNum, 
             string instructions, out Step step)
         {
             step = _dalbot.AddStep(recipe, stepNum, instructions);
@@ -295,7 +295,7 @@ namespace IngredientDAL.Controllers
             return this;
         }
 
-        public IngredientController AddStep(Recipe recipe, int stepNum,
+        public RobotController AddStep(Recipe recipe, int stepNum,
             string instructions)
         {
             Step step;
@@ -307,7 +307,7 @@ namespace IngredientDAL.Controllers
          * For example, half cup of water for step 2, and
          * two tablespoons of water for step 5, of the same recipe.
          * */
-        public IngredientController AddRecipeItem(Step step, 
+        public RobotController AddRecipeItem(Step step, 
             Ingredient ingredient, int quantity, string unit,
             out RecipeItem recipeItem)
         {
@@ -319,7 +319,7 @@ namespace IngredientDAL.Controllers
             return this;
         }
 
-        public IngredientController AddRecipeItem(Step step,
+        public RobotController AddRecipeItem(Step step,
             Ingredient ingredient, int quantity, string unit)
         {
             RecipeItem recipeItem;
@@ -330,21 +330,21 @@ namespace IngredientDAL.Controllers
 
         #region Sort Methods
 
-        public IngredientController SortIngredientsByIngredientName(
+        public RobotController SortIngredientsByIngredientName(
             out List<Ingredient> ingredients)
         {
             ingredients = _searchbot.SortIngredientsByIngredientName();
             return this;
         }
 
-        public IngredientController SortProductsByIngredientName(
+        public RobotController SortProductsByIngredientName(
             out List<Product> products )
         {
             products = _searchbot.SortProductsByIngredientName();
             return this;
         }
 
-        public IngredientController SortProductsByBrandName(
+        public RobotController SortProductsByBrandName(
             out List<Product> products )
         {
             products = SortProductsByBrandName(PRODUCTS);
@@ -459,7 +459,7 @@ namespace IngredientDAL.Controllers
             return _dalbot.GetAllProductsInFridge();
         }
 
-        public IngredientController GetProductFromFridge(Product product,
+        public RobotController GetProductFromFridge(Product product,
             out RefrigeratedProduct rProduct)
         {
             rProduct = REFRIGERATOR.ProductsInFridge.FirstOrDefault(p =>
@@ -467,7 +467,7 @@ namespace IngredientDAL.Controllers
             return this;
         }
 
-        public IngredientController UseProductInFridge(
+        public RobotController UseProductInFridge(
             RefrigeratedProduct refrigeratedProductBefore, 
             double quantityUsed, string unitsUsed, 
             out RefrigeratedProduct refrigeratedProductAfter)
