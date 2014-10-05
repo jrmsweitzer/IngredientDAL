@@ -2,21 +2,32 @@
     ViewBag.Title = "Index";
 }
 
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/knockout-3.2.0.js"></script>
+<script src="~/Scripts/IndexViewModel.js"></script>
+
 <h2>Ingredient</h2>
 
-<p>Store Name: <input width="200" /></p>
-<p>Date of Receipt: <input width="200" /></p>
-<p>Time of Receipt: <input width="200" /></p>
-<p>Brand: <input width="200" /></p>
-<p>Item: <input width="200" /></p>
-<p>Price: $<input width="200" /></p>
-<p>Quantity: <input width="200" /></p>
-<p>Unit: <input width="200" /></p>
+<form data-bind="submit: addIngredient">
+    <p>Store Name: <input data-bind="value: storeNameText" width="200" /></p>
+    <p>Date of Receipt: <input data-bind="value: dateText" width="200" />
+       Time of Receipt: <input data-bind="value: timeText" width="200" /></p>
+    <p>Brand: <input data-bind="value: brandText" width="200" />
+       Item: <input data-bind="value: itemText" width="200" />
+       Price: $<input data-bind="value: priceText" width="200" /></p>
+    <p>Quantity: <input data-bind="value: quantityText" width="200" />
+       Unit: <input data-bind="value: unitText" width="200" /></p>
+    <button data-bind="click: addIngredient">+ Add Item</button>
+</form>
 
-
-
-
-
-
-
-
+@foreach (var receiptItem in ViewBag.AllReceiptItems)
+{
+    var product = @receiptItem.Product;
+    var brand = @product.BrandName;
+    var quantity = @product.ProductQuantity;
+    var unit = @product.ProductUnit;
+    
+    var ingredientName = @product.Ingredient.IngredientName;
+    
+    <p><div>@brand @ingredientName @quantity @unit</div></p>
+}

@@ -13,6 +13,7 @@ namespace Portal.Controllers
         // GET: Ingredient
         public ActionResult Index()
         {
+            ViewBag.AllReceiptItems = controller.GetAllReceiptItems();
             return View();
         }
     }
