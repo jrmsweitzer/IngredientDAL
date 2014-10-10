@@ -23,7 +23,7 @@ namespace MyShopper
     {
         // ReSharper disable InconsistentNaming
         // ReSharper disable NotAccessedField.Local
-        private readonly RobotController CONTROLLER;
+        private readonly DatabaseRemote CONTROLLER;
         // ReSharper restore NotAccessedField.Local
         // ReSharper restore InconsistentNaming
 
@@ -33,7 +33,7 @@ namespace MyShopper
 
         public MainWindow()
         {
-            CONTROLLER = new RobotController();
+            CONTROLLER = new DatabaseRemote();
             _receiptBuilder = new List<ReceiptObject>();
             _allProducts = CONTROLLER.GetAllProducts();
         }

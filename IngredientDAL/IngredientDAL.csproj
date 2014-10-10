@@ -55,6 +55,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -72,7 +73,7 @@
     <Compile Include="Bots\DALBot.cs" />
     <Compile Include="Bots\RecipeBot.cs" />
     <Compile Include="Bots\SearchBot.cs" />
-    <Compile Include="Controllers\RobotController.cs" />
+    <Compile Include="Controllers\DatabaseRemote.cs" />
     <Compile Include="DAL\FakeDbSet.cs" />
     <Compile Include="DAL\FakeIngredientContext.cs" />
     <Compile Include="DAL\IIngredientContext.cs" />
@@ -94,6 +95,10 @@
     <Compile Include="Migrations\201406302010241_FixingRefrigeratorProductsUnitsAndQuantites.cs" />
     <Compile Include="Migrations\201406302010241_FixingRefrigeratorProductsUnitsAndQuantites.Designer.cs">
       <DependentUpon>201406302010241_FixingRefrigeratorProductsUnitsAndQuantites.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201410072006585_AddedNutritionColumnsToIngredientTable.cs" />
+    <Compile Include="Migrations\201410072006585_AddedNutritionColumnsToIngredientTable.Designer.cs">
+      <DependentUpon>201410072006585_AddedNutritionColumnsToIngredientTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Ingredient.cs" />
@@ -124,6 +129,15 @@
     <EmbeddedResource Include="Migrations\201406302010241_FixingRefrigeratorProductsUnitsAndQuantites.resx">
       <DependentUpon>201406302010241_FixingRefrigeratorProductsUnitsAndQuantites.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410072006585_AddedNutritionColumnsToIngredientTable.resx">
+      <DependentUpon>201410072006585_AddedNutritionColumnsToIngredientTable.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DAL\IngredientDAL.DAL.IngredientContext.mdf" />
+    <Content Include="DAL\IngredientDAL.DAL.IngredientContext_log.ldf">
+      <DependentUpon>IngredientDAL.DAL.IngredientContext.mdf</DependentUpon>
+    </Content>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

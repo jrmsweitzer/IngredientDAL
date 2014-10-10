@@ -1,20 +1,43 @@
-﻿function IndexViewModel() {
-    // Data
-    var self = this;
-    self.Ingredients = ko.observableArray([]);
-    self.storeNameText = ko.observable();
-    self.dateText = ko.observable();
-    self.timeText = ko.observable();
-    self.brandText = ko.observable();
-    self.itemText = ko.observable();
-    self.priceText = ko.observable();
-    self.quantityText = ko.observable();
-    self.unitText = ko.observable();
+﻿function getNewInsertion(oldValue, newValue, newPosition) {
 
-    self.addIngredient = function () {
-        self.Ingredients.push(new Ingredient({ name: this.itemText() }));
-        self.itemText("");
-    };
-};
+    var type = '';
+    var from = 0;
+    var length = 0;
+    var text = '';
 
-ko.applyBindings(new IndexViewModel());
+    if (oldValue.length > newValue.length) {
+        type = 'deletion';
+        changeLength = oldValue.length - newValue.length;
+        pos = newPosition;
+        text = oldValue.substr(pos, changeLength);
+    } else {
+        type = 'insertion';
+        changeLength = newValue.length - oldValue.length;
+        pos = newPosition - changeLength;
+        text = newValue.substr(pos, changeLength);
+    }
+
+    return { text: text, type: type, position: pos, changeLength: changeLength };
+}
+
+
+
+$(function () {
+
+    $("#textareaIngredientName").data("old_value", $("#textareaIngredientName").val());
+
+    $("#textareaIngredientName").bind("paste cut keydown", function (e) {
+        var that = this;
+        setTimeout(function () {
+            if (typeof $(that).data("old_value") == "undefined") {
+                $(that).data("old_value", $(that).val());
+            }
+
+
+            getNewInsertion($(that).data("old_value"), $(that).val(), e.target.selectionStart);
+            $(that).data("old_value", $(that).val());
+        }, 200);
+
+    })
+
+});

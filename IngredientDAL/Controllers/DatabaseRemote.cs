@@ -20,7 +20,7 @@ namespace IngredientDAL.Controllers
      * The controller takes care of all of our robot classes, and distributes
      * the method calls appropriately.
      * */
-    public class RobotController
+    public class DatabaseRemote
     {
         //DALBot - handles any and all database calls
         private DalBot _dalbot;
@@ -42,7 +42,7 @@ namespace IngredientDAL.Controllers
         /**
          * Our default constructor
          * */
-        public RobotController()
+        public DatabaseRemote()
         {
             Initialize(new IngredientContext());
         }
@@ -51,7 +51,7 @@ namespace IngredientDAL.Controllers
          * Our constructor used for mocking. Just pass in a new 
          * FakeIngredientContext()
          * */
-        public RobotController(IIngredientContext context)
+        public DatabaseRemote(IIngredientContext context)
         {
             Initialize(context);
         }
@@ -113,7 +113,7 @@ namespace IngredientDAL.Controllers
         /**
          * Allows us to add an ingredient using the ingredient name
          * */
-        public RobotController AddIngredient(string ingredientName, 
+        public DatabaseRemote AddIngredient(string ingredientName, 
             out Ingredient ingredient)
         {
             ingredient = _dalbot.AddIngredient(ingredientName);
@@ -121,13 +121,13 @@ namespace IngredientDAL.Controllers
             return this;
         }
 
-        public RobotController AddIngredient(string ingredientName)
+        public DatabaseRemote AddIngredient(string ingredientName)
         {
             Ingredient ingredient;
             return AddIngredient(ingredientName, out ingredient);
         }
 
-        public RobotController AddProductToFridge(Product prSugar,
+        public DatabaseRemote AddProductToFridge(Product prSugar,
             DateTime expirationDate,
             out RefrigeratedProduct productInFridge)
         {
@@ -136,7 +136,7 @@ namespace IngredientDAL.Controllers
             return this;
         }
 
-        public RobotController AddProductToFridge(Product prSugar, 
+        public DatabaseRemote AddProductToFridge(Product prSugar, 
             DateTime expirationDate)
         {
             RefrigeratedProduct productInFridge;
@@ -147,7 +147,7 @@ namespace IngredientDAL.Controllers
         /**
          * Allows us to add a product using the ingredient name
          * */
-        public RobotController AddProduct(string ingredientName, 
+        public DatabaseRemote AddProduct(string ingredientName, 
             string brandName, int productQuantity, string productUnits,
             out Product product)
         {
@@ -158,7 +158,7 @@ namespace IngredientDAL.Controllers
             return this;
         }
 
-        public RobotController AddProduct(string ingredientName,
+        public DatabaseRemote AddProduct(string ingredientName,
             string brandName, int productQuantity, string productUnits)
         {
             Product product;
@@ -169,7 +169,7 @@ namespace IngredientDAL.Controllers
         /**
          * Allows us to add a product using the ingredient class
          * */
-        public RobotController AddProduct(Ingredient ingredient, 
+        public DatabaseRemote AddProduct(Ingredient ingredient, 
             string brandName, int productQuantity, string productUnits,
             out Product product)
         {
@@ -180,7 +180,7 @@ namespace IngredientDAL.Controllers
             return this;
         }
 
-        public RobotController AddProduct(Ingredient ingredient,
+        public DatabaseRemote AddProduct(Ingredient ingredient,
             string brandName, int productQuantity, string productUnits)
         {
             Product product;
@@ -192,7 +192,7 @@ namespace IngredientDAL.Controllers
          * Allows us to add a receipt using the ingredient name, and strings
          * for the product details.
          * */
-        public RobotController AddReceiptItem(string ingredientName, 
+        public DatabaseRemote AddReceiptItem(string ingredientName, 
             string brandName, int productQuantity, string productUnits, 
             string storeName, DateTime dateOfReceipt, double priceOfProduct,
             out ReceiptItem receiptItem)
@@ -206,7 +206,7 @@ namespace IngredientDAL.Controllers
             return this;
         }
 
-        public RobotController AddReceiptItem(string ingredientName,
+        public DatabaseRemote AddReceiptItem(string ingredientName,
             string brandName, int productQuantity, string productUnits,
             string storeName, DateTime dateOfReceipt, double priceOfProduct)
         {
@@ -219,7 +219,7 @@ namespace IngredientDAL.Controllers
         /**
          * Allows us to add a receipt using the product class
          * */
-        public RobotController AddReceiptItem(Product product,
+        public DatabaseRemote AddReceiptItem(Product product,
             string storeName, DateTime dateOfReceipt, double priceOfProduct,
             out ReceiptItem receiptItem)
         {
@@ -231,7 +231,7 @@ namespace IngredientDAL.Controllers
             return this;
         }
 
-        public RobotController AddReceiptItem(Product product,
+        public DatabaseRemote AddReceiptItem(Product product,
             string storeName, DateTime dateOfReceipt, double priceOfProduct)
         {
             ReceiptItem receiptItem;
@@ -243,7 +243,7 @@ namespace IngredientDAL.Controllers
          * Allows us to add a receipt using the ingredient class, and strings
          * for the product details.
          * */
-        public RobotController AddReceiptItem(Ingredient ingredient,
+        public DatabaseRemote AddReceiptItem(Ingredient ingredient,
             string brandName, int productQuantity, string productUnits,
             string storeName, DateTime dateOfReceipt, double priceOfProduct,
             out ReceiptItem receiptItem)
@@ -257,7 +257,7 @@ namespace IngredientDAL.Controllers
             return this;
         }
 
-        public RobotController AddReceiptItem(Ingredient ingredient,
+        public DatabaseRemote AddReceiptItem(Ingredient ingredient,
             string brandName, int productQuantity, string productUnits,
             string storeName, DateTime dateOfReceipt, double priceOfProduct)
         {
@@ -270,7 +270,7 @@ namespace IngredientDAL.Controllers
         /**
          * Allows us to add a new Recipe.
          * */
-        public RobotController AddRecipe(string recipeName,
+        public DatabaseRemote AddRecipe(string recipeName,
             out Recipe recipe)
         {
             recipe = _dalbot.AddRecipe(recipeName);
@@ -278,7 +278,7 @@ namespace IngredientDAL.Controllers
             return this;
         }
 
-        public RobotController AddRecipe(string recipeName)
+        public DatabaseRemote AddRecipe(string recipeName)
         {
             Recipe recipe;
             return AddRecipe(recipeName, out recipe);
@@ -287,7 +287,7 @@ namespace IngredientDAL.Controllers
         /**
          * Allows us to add a new step to an already-defined recipe
          * */
-        public RobotController AddStep(Recipe recipe, int stepNum, 
+        public DatabaseRemote AddStep(Recipe recipe, int stepNum, 
             string instructions, out Step step)
         {
             step = _dalbot.AddStep(recipe, stepNum, instructions);
@@ -295,7 +295,7 @@ namespace IngredientDAL.Controllers
             return this;
         }
 
-        public RobotController AddStep(Recipe recipe, int stepNum,
+        public DatabaseRemote AddStep(Recipe recipe, int stepNum,
             string instructions)
         {
             Step step;
@@ -307,7 +307,7 @@ namespace IngredientDAL.Controllers
          * For example, half cup of water for step 2, and
          * two tablespoons of water for step 5, of the same recipe.
          * */
-        public RobotController AddRecipeItem(Step step, 
+        public DatabaseRemote AddRecipeItem(Step step, 
             Ingredient ingredient, int quantity, string unit,
             out RecipeItem recipeItem)
         {
@@ -319,7 +319,7 @@ namespace IngredientDAL.Controllers
             return this;
         }
 
-        public RobotController AddRecipeItem(Step step,
+        public DatabaseRemote AddRecipeItem(Step step,
             Ingredient ingredient, int quantity, string unit)
         {
             RecipeItem recipeItem;
@@ -330,21 +330,21 @@ namespace IngredientDAL.Controllers
 
         #region Sort Methods
 
-        public RobotController SortIngredientsByIngredientName(
+        public DatabaseRemote SortIngredientsByIngredientName(
             out List<Ingredient> ingredients)
         {
             ingredients = _searchbot.SortIngredientsByIngredientName();
             return this;
         }
 
-        public RobotController SortProductsByIngredientName(
+        public DatabaseRemote SortProductsByIngredientName(
             out List<Product> products )
         {
             products = _searchbot.SortProductsByIngredientName();
             return this;
         }
 
-        public RobotController SortProductsByBrandName(
+        public DatabaseRemote SortProductsByBrandName(
             out List<Product> products )
         {
             products = SortProductsByBrandName(PRODUCTS);
@@ -459,7 +459,7 @@ namespace IngredientDAL.Controllers
             return _dalbot.GetAllProductsInFridge();
         }
 
-        public RobotController GetProductFromFridge(Product product,
+        public DatabaseRemote GetProductFromFridge(Product product,
             out RefrigeratedProduct rProduct)
         {
             rProduct = REFRIGERATOR.ProductsInFridge.FirstOrDefault(p =>
@@ -467,7 +467,7 @@ namespace IngredientDAL.Controllers
             return this;
         }
 
-        public RobotController UseProductInFridge(
+        public DatabaseRemote UseProductInFridge(
             RefrigeratedProduct refrigeratedProductBefore, 
             double quantityUsed, string unitsUsed, 
             out RefrigeratedProduct refrigeratedProductAfter)

@@ -18,10 +18,26 @@ namespace IngredientDAL.Bots
 
         internal Ingredient AddIngredient(string ingredientName)
         {
-            var ingredient = _db.Ingredients.FirstOrDefault(i => 
-                i.IngredientName == ingredientName) ??
-                        _db.Ingredients.Add(new Ingredient 
-                        { IngredientName = ingredientName });
+            var ingredient = _db.Ingredients.FirstOrDefault(i =>
+                i.IngredientName == ingredientName);
+            if (ingredient == null)
+            {
+                ingredient = _db.Ingredients.Add(new Ingredient
+                    {
+                        IngredientName = ingredientName,
+                        HasFoundNutrients = false,
+                        ServingSizeQuantity = 0,
+                        ServingSizeUnits = "",
+                        CaloriesPerServing = 0,
+                        FatPerServing = 0,
+                        CholesterolPerServing = 0,
+                        SodiumPerServing = 0,
+                        PotassiumPerServing = 0,
+                        CarbohydratesPerServing = 0,
+                        SugarsPerServing = 0,
+                        ProteinPerServing = 0
+                    });
+            }
 
             _db.SaveChanges();
 
@@ -90,7 +106,7 @@ namespace IngredientDAL.Bots
         {
             Product product;
             var prodInDb = 
-                RobotController.PRODUCTS
+                DatabaseRemote.PRODUCTS
                     .FirstOrDefault(i => i.IngredientId == ingredient.IngredientId &&
                                          i.BrandName == brandName &&
                                          i.ProductUnit == unit &&

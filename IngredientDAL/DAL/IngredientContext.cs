@@ -1,11 +1,15 @@
 ﻿using IngredientDAL.Models;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Diagnostics;
 
 namespace IngredientDAL.DAL
 {
     public class IngredientContext : DbContext, IIngredientContext
     {
+        public IngredientContext()
+            : base("DefaultConnection") {
+        }
         //Database Models
         public IDbSet<Ingredient> Ingredients { get; set; }
         public IDbSet<ReceiptItem> ReceiptItems { get; set; }

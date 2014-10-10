@@ -12,7 +12,7 @@ namespace UnitTests
     public class DalTests : TestConstants
     {
         private DateTime _date;
-        private RobotController _controller;
+        private DatabaseRemote _controller;
 
         #region Test Variables
 
@@ -40,7 +40,7 @@ namespace UnitTests
         public void Setup()
         {
             var context = new FakeIngredientContext();
-            _controller = new RobotController(context);
+            _controller = new DatabaseRemote(context);
             _date = DateTime.Now;
             Assert.IsNotNull(_controller);
         }

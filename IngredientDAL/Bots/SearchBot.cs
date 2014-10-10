@@ -10,13 +10,13 @@ namespace IngredientDAL.Bots
     {
         internal List<Ingredient> SortIngredientsByIngredientName()
         {
-            return RobotController.INGREDIENTS
+            return DatabaseRemote.INGREDIENTS
                 .OrderBy(i => i.IngredientName).ToList();
         }
 
         internal List<Product> SortProductsByIngredientName()
         {
-            return RobotController.PRODUCTS
+            return DatabaseRemote.PRODUCTS
                 .OrderBy(i => i.Ingredient.IngredientName).ToList();
         }
 
@@ -27,37 +27,37 @@ namespace IngredientDAL.Bots
 
         internal List<ReceiptItem> SortReceiptsByIngredientName()
         {
-            return RobotController.RECEIPT
+            return DatabaseRemote.RECEIPT
                 .OrderBy(i => i.Product.Ingredient.IngredientName).ToList();
         }
 
         internal List<ReceiptItem> SortReceiptsByBrandName()
         {
-            return RobotController.RECEIPT
+            return DatabaseRemote.RECEIPT
                 .OrderBy(i => i.Product.BrandName).ToList();
         }
 
         internal List<ReceiptItem> SortReceiptsByPrice()
         {
-            return RobotController.RECEIPT
+            return DatabaseRemote.RECEIPT
                 .OrderBy(i => i.IngredientPrice).ToList();
         }
 
         internal Ingredient FindIngredientByName(string ingredientName)
         {
-            return RobotController.INGREDIENTS.FirstOrDefault(i => 
+            return DatabaseRemote.INGREDIENTS.FirstOrDefault(i => 
                 i.IngredientName.Equals(ingredientName));
         }
 
         internal Product FindProductByIngredientName(string ingredientName)
         {
-            return RobotController.PRODUCTS.FirstOrDefault(i =>
+            return DatabaseRemote.PRODUCTS.FirstOrDefault(i =>
                 i.Ingredient.IngredientName.Equals(ingredientName));
         }
 
         internal Product FindProductByBrandName(string brandName)
         {
-            return RobotController.PRODUCTS.FirstOrDefault(i =>
+            return DatabaseRemote.PRODUCTS.FirstOrDefault(i =>
                 i.BrandName.Equals(brandName));
         }
 

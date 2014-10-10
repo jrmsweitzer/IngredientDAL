@@ -9,14 +9,14 @@
 <h2>Ingredient</h2>
 
 <form data-bind="submit: addIngredient">
-    <p>Store Name: <input data-bind="value: storeNameText" width="200" /></p>
-    <p>Date of Receipt: <input data-bind="value: dateText" width="200" />
-       Time of Receipt: <input data-bind="value: timeText" width="200" /></p>
-    <p>Brand: <input data-bind="value: brandText" width="200" />
-       Item: <input data-bind="value: itemText" width="200" />
-       Price: $<input data-bind="value: priceText" width="200" /></p>
-    <p>Quantity: <input data-bind="value: quantityText" width="200" />
-       Unit: <input data-bind="value: unitText" width="200" /></p>
+    <p>Store Name: <input width="200" /></p>
+    <p>Date of Receipt: <input width="200" />
+       Time of Receipt: <input width="200" /></p>
+    <p>Brand: <input width="200" />
+       Item: <textarea style="width:300px" id="textareaIngredientName"></textarea>
+       Price: $<input width="200" /></p>
+    <p>Quantity: <input width="200" />
+       Unit: <input width="200" /></p>
     <button data-bind="click: addIngredient">+ Add Item</button>
 </form>
 

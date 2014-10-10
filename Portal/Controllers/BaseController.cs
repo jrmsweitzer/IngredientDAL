@@ -5,6 +5,6 @@ namespace Portal.Controllers
 {
     public class BaseController : Controller
     {
-        public RobotController controller = new RobotController();
+        public DatabaseRemote controller = new DatabaseRemote();
     }
 }
