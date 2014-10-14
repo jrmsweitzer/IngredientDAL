@@ -52,7 +52,7 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <ListBox Name="ListBoxFilteredReceipts" Width="500" Height="560" SelectionChanged="FilteredReceipts_SelectionChanged"/>
-                        <ListBox Name="ListBoxCurrentReceipt" Width="700" Height="560" SelectionChanged="CurrentReceipt_SelectionChanged"/>
+                        <ListBox x:Name="ListBoxCurrentReceipt" Width="700" Height="560" SelectionChanged="CurrentReceipt_SelectionChanged"/>
                         <StackPanel Orientation="Vertical">
                             <Button Content="Save Receipt" IsEnabled="False" Name="ButtonSave" Click="SaveBTN_Click"/>
                             <Button Content="Clear Receipt" IsEnabled="False" Name="ButtonClearReceipt" Click="ClearReceiptBtn_Click"/>
@@ -72,7 +72,29 @@
                     <TextBox Name="TextBoxShoppingCart"/>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Tab 3" IsEnabled="False">
+            <TabItem Header="Vegan Recipes">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label>Recipe Name:</Label>
+                        <TextBox Name="TextBoxRecipeName" Width="200"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <ListBox Name="ListBoxRecipeInstructionList" Width="700" Height="500"/>
+                        <StackPanel>
+                            <Label>Type your recipe instruction below, then press "Add Step" to add it to the list.</Label>
+                            <TextBox Name="TextBoxRecipeInstruction" Width="500" Height="150" TextChanged="TextBoxRecipeInstruction_TextChanged"/>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel Width="150">
+                                    <Button Name="ButtonAddStep" IsEnabled="False" Click="ButtonAddStep_Click">+ Add Step</Button>
+                                    <Button Name="ButtonRemoveStep" IsEnabled="False">- Remove Step</Button>
+                                    <Button Name="ButtonEditSaveStep" IsEnabled="False">Edit Step</Button>
+                                    <Button Name="ButtonClearRecipe" IsEnabled="False">Clear Recipe</Button>
+                                    <Button Name="ButtonSaveRecipe" IsEnabled="False">Save Recipe</Button>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
             </TabItem>
         </TabControl>
     </Grid>
