@@ -30,11 +30,13 @@ namespace MyShopper
         private readonly List<ReceiptObject> _receiptBuilder;
         private List<Product> _filteredProductsList; 
         private readonly List<Product> _allProducts;
+        private List<string> _recipe;
 
         public MainWindow()
         {
             CONTROLLER = new DatabaseRemote();
             _receiptBuilder = new List<ReceiptObject>();
+            _recipe = new List<string>();
             _allProducts = CONTROLLER.GetAllProducts();
         }
 
@@ -351,6 +353,70 @@ namespace MyShopper
         private void SearchBTN_Click(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();
+        }
+
+        private void TextBoxRecipeInstruction_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TextBoxRecipeInstruction.Text))
+            {
+                ButtonAddStep.IsEnabled = true;
+            }
+            else
+            {
+                ButtonAddStep.IsEnabled = false;
+            }
+        }
+
+        private void ButtonAddStep_Click(object sender, RoutedEventArgs e)
+        {
+            _recipe.Add(TextBoxRecipeInstruction.Text);
+            UpdateRecipe();
+            TextBoxRecipeInstruction.Text = "";
+        }
+
+        private void UpdateRecipe()
+        {
+            ListBoxRecipeInstructionList.Items.Clear();
+            for  (int step = 1; step <= _recipe.Count; step++)
+            {
+                StackPanel panel = new StackPanel();
+                panel.Orientation = Orientation.Horizontal;
+
+                Button up = new Button();
+                up.Content = "↑";
+                up.Click += new RoutedEventHandler(MoveRecipeInstructionUp);
+                up.Name = "ButtonUpStep" + step;
+
+                Button down = new Button();
+                down.Content = "↓";
+
+                if (step != 1)
+                {
+                    panel.Children.Add(up);
+                }
+                if (step != _recipe.Count)
+                {
+                    panel.Children.Add(down);
+                }
+
+                Label instruction = new Label();
+                instruction.Content = step + ". " + _recipe[step - 1];
+
+                panel.Children.Add(instruction);
+
+                ListBoxRecipeInstructionList.Items.Add(panel);
+            }
+        }
+
+        private void MoveRecipeInstructionUp(object sender, RoutedEventArgs e)
+        {
+            int stepToMove = ListBoxRecipeInstructionList.SelectedIndex + 1;
+
+            string temp = _recipe[stepToMove - 1];
+            _recipe[stepToMove - 1] = _recipe[stepToMove];
+            _recipe[stepToMove] = temp;
+
+            UpdateRecipe();
         }
     }
 }
