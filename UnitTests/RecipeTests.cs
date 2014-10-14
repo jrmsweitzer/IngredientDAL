@@ -2,6 +2,7 @@
 using IngredientDAL.DAL;
 using IngredientDAL.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
 namespace UnitTests
 {
@@ -92,7 +93,7 @@ namespace UnitTests
             Assert.AreEqual(ONE,
                 step2.RecipeItems.Count);
             Assert.AreEqual(TWO,
-                _controller.GetAllRecipeItems().Count);
+                _controller.GetAllRecipeItemsForRecipe(recipe).Count);
 
             var recipes = _controller.GetAllRecipes();
             Assert.AreEqual(recipes[ZERO].Name, APPLEBUTTERTOAST);
@@ -130,7 +131,85 @@ namespace UnitTests
                 rPizza.Steps.Count);
 
             _controller.AddStep(rPizza, TWO, "Spread Tomato ");
+        }
 
+        [TestMethod]
+        public void AppleCinnamonOatmeal()
+        {
+            // Blank DB
+            Assert.AreEqual(ZERO, _controller.GetAllRecipes().Count);
+
+            // Recipe created and saved to DB
+            Recipe rAppleCinnamonOatmeal;
+            Assert.AreEqual(ONE, 
+                _controller.AddRecipe("Apple Cinnamon Oatmeal", 
+                out rAppleCinnamonOatmeal).GetAllRecipes().Count);
+
+            // Recipe has no steps
+            Assert.AreEqual(ZERO, rAppleCinnamonOatmeal.Steps.Count);
+            
+            // Steps created and added to Recipe
+            _controller.AddStep(rAppleCinnamonOatmeal, ONE,
+                "Bring water to a rolling boil. Boil for about 5 minutes.");
+            Assert.AreEqual(ONE, rAppleCinnamonOatmeal.Steps.Count);
+
+            _controller.AddStep(rAppleCinnamonOatmeal, TWO,
+                "Add boiling water to your oats. Mix in Cinnamon and Sugar, " +
+                "and allow to thicken for about 5 minutes.");
+            Assert.AreEqual(TWO, rAppleCinnamonOatmeal.Steps.Count);
+
+            _controller.AddStep(rAppleCinnamonOatmeal, THREE,
+                "Enjoy!");
+            Assert.AreEqual(THREE, rAppleCinnamonOatmeal.Steps.Count);
+
+            // No Recipe Ingredients
+            Assert.AreEqual(ZERO, 
+                rAppleCinnamonOatmeal.GetAllRecipeIngredients().Count);
+            Assert.AreEqual(ZERO, 
+                _controller.GetAllRecipeItemsForRecipe(rAppleCinnamonOatmeal)
+                .Count);
+
+            // Create the ingredients for the DB (they would already exist in 
+            // actual code, along with nutritional information)
+            Ingredient Water;
+            _controller.AddIngredient("Water", out Water);
+
+            Ingredient Oats;
+            _controller.AddIngredient("Oats", out Oats);
+
+            Ingredient Cinnamon;
+            _controller.AddIngredient("Cinnamon", out Cinnamon);
+
+            Ingredient Sugar;
+            _controller.AddIngredient("Sugar", out Sugar);
+
+            // Add a Recipe Item (1 cup water)
+            _controller.AddRecipeItem(rAppleCinnamonOatmeal, ONE, Water, 
+                ONE, "cup");
+            // 1 cup Oats
+            _controller.AddRecipeItem(rAppleCinnamonOatmeal, TWO, Oats,
+                ONE, "cup");
+            // 2 Tbs Sugar
+            _controller.AddRecipeItem(rAppleCinnamonOatmeal, TWO, Sugar,
+                TWO, "Tbs");
+            // 1 Tbs Cinnamon
+            _controller.AddRecipeItem(rAppleCinnamonOatmeal, TWO, Cinnamon,
+                ONE, "Tbs");
+
+            // Four Recipe Ingredients
+            Assert.AreEqual(FOUR,
+                rAppleCinnamonOatmeal.GetAllRecipeIngredients().Count);
+            Assert.AreEqual(FOUR,
+                _controller.GetAllRecipeItemsForRecipe(rAppleCinnamonOatmeal)
+                .Count);
+
+            // One for step 1
+            Assert.AreEqual(ONE,
+                (rAppleCinnamonOatmeal.Steps as List<Step>)[0].RecipeItems.Count);
+
+            // And Three for step 2.
+            Assert.AreEqual(THREE,
+                (rAppleCinnamonOatmeal.Steps as List<Step>)[1].RecipeItems.Count);
         }
     }
 }

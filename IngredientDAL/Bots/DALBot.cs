@@ -178,7 +178,7 @@ namespace IngredientDAL.Bots
         }
 
         internal RecipeItem AddRecipeItem(Step step, Ingredient ingredient, 
-            int quantity, string unit)
+            double quantity, string unit)
         {
             var recipeItem = new RecipeItem
             {

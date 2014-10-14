@@ -107,6 +107,12 @@ namespace IngredientDAL.Controllers
         {
             return RECIPE_ITEMS;
         }
+
+        public List<RecipeItem> GetAllRecipeItemsForRecipe(Recipe recipe)
+        {
+            return RECIPE_ITEMS.Where(r => r.Step.RecipeId == recipe.RecipeId)
+                .ToList();
+        }
         #endregion
 
         #region Add Methods
@@ -308,7 +314,7 @@ namespace IngredientDAL.Controllers
          * two tablespoons of water for step 5, of the same recipe.
          * */
         public DatabaseRemote AddRecipeItem(Step step, 
-            Ingredient ingredient, int quantity, string unit,
+            Ingredient ingredient, double quantity, string unit,
             out RecipeItem recipeItem)
         {
             recipeItem = _dalbot.AddRecipeItem(step, ingredient,
@@ -320,12 +326,31 @@ namespace IngredientDAL.Controllers
         }
 
         public DatabaseRemote AddRecipeItem(Step step,
-            Ingredient ingredient, int quantity, string unit)
+            Ingredient ingredient, double quantity, string unit)
         {
             RecipeItem recipeItem;
             return AddRecipeItem(step, ingredient, quantity, unit,
                 out recipeItem);
         }
+
+        /**
+         * Allows us to add a recipeItem directly to a recipe, based
+         * on the stepNum
+         */
+        public DatabaseRemote AddRecipeItem(Recipe recipe, int stepNum, 
+            Ingredient ingredient, double quantity, string units)
+        {
+            if (stepNum > recipe.Steps.Count)
+            {
+                throw new IndexOutOfRangeException(
+                    "stepNum is greater that number of steps in recipe!");
+            }
+
+            Step step = recipe.Steps.Where(s => s.StepNum == stepNum)
+                .FirstOrDefault();
+            return AddRecipeItem(step, ingredient, quantity, units);
+        }
+
         #endregion
 
         #region Sort Methods

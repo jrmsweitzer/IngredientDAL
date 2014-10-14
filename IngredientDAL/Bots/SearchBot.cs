@@ -45,7 +45,7 @@ namespace IngredientDAL.Bots
 
         internal Ingredient FindIngredientByName(string ingredientName)
         {
-            return DatabaseRemote.INGREDIENTS.FirstOrDefault(i => 
+            return DatabaseRemote.INGREDIENTS.FirstOrDefault(i =>
                 i.IngredientName.Equals(ingredientName));
         }
 
