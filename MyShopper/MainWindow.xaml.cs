@@ -31,6 +31,8 @@ namespace MyShopper
         private List<Product> _filteredProductsList; 
         private readonly List<Product> _allProducts;
         private List<string> _recipe;
+        //this should be put into a recipebuildermodel somewhere
+        private int _currentStepNum;
 
         public MainWindow()
         {
@@ -357,13 +359,17 @@ namespace MyShopper
 
         private void TextBoxRecipeInstruction_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(TextBoxRecipeInstruction.Text))
+            if (ButtonEditSaveStep.Content.Equals("Edit Step"))
             {
-                ButtonAddStep.IsEnabled = true;
-            }
-            else
-            {
-                ButtonAddStep.IsEnabled = false;
+                ListBoxRecipeInstructionList.SelectedIndex = -1;
+                if (!string.IsNullOrEmpty(TextBoxRecipeInstruction.Text))
+                {
+                    ButtonAddStep.IsEnabled = true;
+                }
+                else
+                {
+                    ButtonAddStep.IsEnabled = false;
+                }
             }
         }
 
@@ -377,46 +383,128 @@ namespace MyShopper
         private void UpdateRecipe()
         {
             ListBoxRecipeInstructionList.Items.Clear();
+            ToggleRecipeStepButtons();
+            ToggleClearRecipeAndSaveRecipeButtons();
+
+            // Display the steps
             for  (int step = 1; step <= _recipe.Count; step++)
             {
-                StackPanel panel = new StackPanel();
-                panel.Orientation = Orientation.Horizontal;
+                TextBlock instruction = new TextBlock();
+                instruction.Width = ListBoxRecipeInstructionList.Width - 20;
+                instruction.Text = step + ". " + _recipe[step - 1];
+                instruction.TextWrapping = TextWrapping.Wrap;
 
-                Button up = new Button();
-                up.Content = "↑";
-                up.Click += new RoutedEventHandler(MoveRecipeInstructionUp);
-                up.Name = "ButtonUpStep" + step;
-
-                Button down = new Button();
-                down.Content = "↓";
-
-                if (step != 1)
-                {
-                    panel.Children.Add(up);
-                }
-                if (step != _recipe.Count)
-                {
-                    panel.Children.Add(down);
-                }
-
-                Label instruction = new Label();
-                instruction.Content = step + ". " + _recipe[step - 1];
-
-                panel.Children.Add(instruction);
-
-                ListBoxRecipeInstructionList.Items.Add(panel);
+                ListBoxRecipeInstructionList.Items.Add(instruction);
             }
         }
 
-        private void MoveRecipeInstructionUp(object sender, RoutedEventArgs e)
+        private void ToggleRecipeStepButtons()
         {
-            int stepToMove = ListBoxRecipeInstructionList.SelectedIndex + 1;
+            var selectedStep = ListBoxRecipeInstructionList.SelectedIndex;
 
-            string temp = _recipe[stepToMove - 1];
-            _recipe[stepToMove - 1] = _recipe[stepToMove];
-            _recipe[stepToMove] = temp;
+            if (selectedStep != -1)
+            {
+                ButtonRemoveStep.IsEnabled = true;
+                ButtonEditSaveStep.IsEnabled = true;
+                ButtonMoveRecipeStepUp.IsEnabled = true;
+                ButtonMoveRecipeStepDown.IsEnabled = true;
+            }
+            else
+            {
+                ButtonRemoveStep.IsEnabled = false;
+                ButtonEditSaveStep.IsEnabled = false;
+                ButtonMoveRecipeStepUp.IsEnabled = false;
+                ButtonMoveRecipeStepDown.IsEnabled = false;
+            }
+            if (selectedStep == 0)
+            {
+                ButtonMoveRecipeStepUp.IsEnabled = false;
+            }
+            if (selectedStep == _recipe.Count - 1)
+            {
+                ButtonMoveRecipeStepDown.IsEnabled = false;
+            }
+        }
+
+        private void ToggleClearRecipeAndSaveRecipeButtons()
+        {
+            if (_recipe.Count > 0)
+            {
+                ButtonClearRecipe.IsEnabled = true;
+                ButtonSaveRecipe.IsEnabled = true;
+            }
+            else
+            {
+                ButtonClearRecipe.IsEnabled = false;
+                ButtonSaveRecipe.IsEnabled = false;
+            }
+        }
+
+        private void ButtonClearRecipe_Click(object sender, RoutedEventArgs e)
+        {
+            _recipe.Clear();
+            ListBoxRecipeInstructionList.SelectedIndex = -1;
+            UpdateRecipe();
+        }
+
+        private void ListBoxRecipeInstructionList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ToggleRecipeStepButtons();
+        }
+
+        private void ButtonRemoveStep_Click(object sender, RoutedEventArgs e)
+        {
+            _recipe.RemoveAt(ListBoxRecipeInstructionList.SelectedIndex);
+            ListBoxRecipeInstructionList.SelectedIndex = -1;
+            UpdateRecipe();
+        }
+
+        private void ButtonMoveRecipeStepUp_Click(object sender, RoutedEventArgs e)
+        {
+            var indexToShiftUp = ListBoxRecipeInstructionList.SelectedIndex;
+
+            string temp = _recipe[indexToShiftUp - 1];
+            _recipe[indexToShiftUp - 1] = _recipe[indexToShiftUp];
+            _recipe[indexToShiftUp] = temp;
 
             UpdateRecipe();
+        }
+
+        private void ButtonMoveRecipeStepDown_Click(object sender, RoutedEventArgs e)
+        {
+            var indexToShift = ListBoxRecipeInstructionList.SelectedIndex;
+
+            string temp = _recipe[indexToShift + 1];
+            _recipe[indexToShift + 1] = _recipe[indexToShift];
+            _recipe[indexToShift] = temp;
+
+            UpdateRecipe();
+        }
+
+        private void ButtonEditSaveStep_Click(object sender, RoutedEventArgs e)
+        {
+            if (ButtonEditSaveStep.Content.Equals("Edit Step"))
+            {
+                ButtonEditSaveStep.Content = "Save Step";
+                _currentStepNum = ListBoxRecipeInstructionList.SelectedIndex + 1;
+                TextBoxRecipeInstruction.Text = _recipe[_currentStepNum - 1];
+                ButtonAddStep.IsEnabled = false;
+                ButtonRemoveStep.IsEnabled = false;
+                ButtonMoveRecipeStepUp.IsEnabled = false;
+                ButtonMoveRecipeStepDown.IsEnabled = false;
+                ButtonClearRecipe.IsEnabled = false;
+                ButtonSaveRecipe.IsEnabled = false;
+            }
+            else
+            {
+                ButtonEditSaveStep.Content = "Edit Step";
+                _recipe[_currentStepNum - 1] = TextBoxRecipeInstruction.Text;
+                TextBoxRecipeInstruction.Text = "";
+                ButtonClearRecipe.IsEnabled = true;
+                ButtonSaveRecipe.IsEnabled = true;
+                ListBoxRecipeInstructionList.SelectedIndex = -1;
+                UpdateRecipe();
+            }
         }
     }
 }
