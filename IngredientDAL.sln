@@ -22,7 +22,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portal", "Portal\Portal.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NutritionHunter", "NutritionHunter\NutritionHunter.csproj", "{69F23B22-CD69-4455-BFF0-BD6DF4CABE62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selenium", "..\..\..\Downloads\Jenkon\Jenkon\Selenium\Selenium.csproj", "{2CAA5CE7-D604-498B-B9CE-6AE914C249BE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selenium", "Selenium\Selenium.csproj", "{2CAA5CE7-D604-498B-B9CE-6AE914C249BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
