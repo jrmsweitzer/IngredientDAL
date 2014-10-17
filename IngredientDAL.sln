@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NutritionHunter", "Nutritio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selenium", "Selenium\Selenium.csproj", "{2CAA5CE7-D604-498B-B9CE-6AE914C249BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logger", "Logger\Logger.csproj", "{D531E07A-41FB-42BD-83D7-1E55F94A356B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +60,10 @@ Global
 		{2CAA5CE7-D604-498B-B9CE-6AE914C249BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CAA5CE7-D604-498B-B9CE-6AE914C249BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CAA5CE7-D604-498B-B9CE-6AE914C249BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D531E07A-41FB-42BD-83D7-1E55F94A356B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D531E07A-41FB-42BD-83D7-1E55F94A356B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D531E07A-41FB-42BD-83D7-1E55F94A356B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D531E07A-41FB-42BD-83D7-1E55F94A356B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
