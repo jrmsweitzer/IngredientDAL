@@ -132,16 +132,17 @@ namespace MyShopper
             ListBoxFilteredReceipts.Items.Clear();
             foreach (var product in list)
             {
-                //In The Raw Sugar, Two Pounds
-                //Brand Ingredient, Quantity Unit
-                const string receiptLine = "{0} {1}, {2} {3}";
+                //In The Raw Sugar, Two Pounds (InRawSug)
+                //Brand Ingredient, Quantity Unit (ReceiptText)
+                const string receiptLine = "{0} {1}, {2} {3} ({4})";
                 ListBoxFilteredReceipts.Items.Add(
                     string.Format(receiptLine,
                         product.BrandName,
                         product.Ingredient.IngredientName,
                         product.ProductQuantity,
-                        product.ProductUnit));
-
+                        product.ProductUnit,
+                        (!string.IsNullOrEmpty(product.ProductReceiptText) ? 
+                        product.ProductReceiptText : "")));
             }
         }
 
@@ -199,6 +200,11 @@ namespace MyShopper
             {
                 _filteredProductsList = CONTROLLER.FilterProductsByUnitContaining(
                     _filteredProductsList, TextBoxUnit.Text);
+            }
+            if (!string.IsNullOrEmpty(TextBoxReceiptText.Text))
+            {
+                _filteredProductsList = CONTROLLER.FilterProductsByReceiptTextContaining(
+                    _filteredProductsList, TextBoxReceiptText.Text);
             }
             UpdateFilteredReceipt(
                 CONTROLLER.SortProductsByBrandName(_filteredProductsList));

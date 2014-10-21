@@ -100,6 +100,14 @@
     <Compile Include="Migrations\201410072006585_AddedNutritionColumnsToIngredientTable.Designer.cs">
       <DependentUpon>201410072006585_AddedNutritionColumnsToIngredientTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201410211242184_AddedReceiptTextForProduct.cs" />
+    <Compile Include="Migrations\201410211242184_AddedReceiptTextForProduct.Designer.cs">
+      <DependentUpon>201410211242184_AddedReceiptTextForProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201410211314239_ReceiptTextOnProduct.cs" />
+    <Compile Include="Migrations\201410211314239_ReceiptTextOnProduct.Designer.cs">
+      <DependentUpon>201410211314239_ReceiptTextOnProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Ingredient.cs" />
     <Compile Include="Models\Product.cs" />
@@ -132,6 +140,12 @@
     <EmbeddedResource Include="Migrations\201410072006585_AddedNutritionColumnsToIngredientTable.resx">
       <DependentUpon>201410072006585_AddedNutritionColumnsToIngredientTable.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410211242184_AddedReceiptTextForProduct.resx">
+      <DependentUpon>201410211242184_AddedReceiptTextForProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410211314239_ReceiptTextOnProduct.resx">
+      <DependentUpon>201410211314239_ReceiptTextOnProduct.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="DAL\IngredientDAL.DAL.IngredientContext.mdf" />
@@ -139,6 +153,7 @@
       <DependentUpon>IngredientDAL.DAL.IngredientContext.mdf</DependentUpon>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

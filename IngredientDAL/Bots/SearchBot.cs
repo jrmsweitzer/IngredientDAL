@@ -92,5 +92,16 @@ namespace IngredientDAL.Bots
                 i.ProductUnit.ToLower()
                 .Contains(substring.ToLower())).ToList();
         }
+
+        internal List<Product> FilterProductsByReceiptTextContaining(
+            List<Product> products, string substring)
+        {
+            var prods = products.Where(p =>
+                !string.IsNullOrEmpty(p.ProductReceiptText));
+
+            return prods.Where(p =>
+                p.ProductReceiptText.ToLower()
+                .Contains(substring.ToLower())).ToList();
+        }
     }
 }

@@ -472,6 +472,22 @@ namespace IngredientDAL.Controllers
             return _searchbot
                 .FilterProductsByUnitContaining(products, substring);
         }
+
+        public List<Product> FilterProductsByReceiptTextContaining(
+            List<Product> products, string substring)
+        {
+            return _searchbot
+                .FilterProductsByReceiptTextContaining(products, substring);
+        }
+
+        public List<Product> FilterProductsByReceiptTextContaining(
+            string substring)
+        {
+            return _searchbot
+                .FilterProductsByReceiptTextContaining(PRODUCTS, substring);
+        }
+
+
         #endregion
 
         public Refrigerator GetRefrigerator()

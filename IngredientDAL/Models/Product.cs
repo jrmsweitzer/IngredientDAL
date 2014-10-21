@@ -9,6 +9,7 @@ namespace IngredientDAL.Models
         public string BrandName { get; set; }
         public double ProductQuantity { get; set; }
         public string ProductUnit { get; set; }
+        public string ProductReceiptText { get; set; }
 
         public virtual Ingredient Ingredient { get; set; }
         public virtual ICollection<ReceiptItem> ReceiptItems { get; set; }

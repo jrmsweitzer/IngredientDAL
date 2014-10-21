@@ -37,6 +37,8 @@
                         <TextBox TextWrapping="Wrap" Width="200" Name="TextBoxBrand" TextChanged="FilterResults_TextChanged"/>
                         <Label Content="Item:"/>
                         <TextBox TextWrapping="Wrap" Width="200" Name="TextBoxItem" TextChanged="FilterResults_TextChanged"/>
+                        <Label Content="Text on Receipt:"/>
+                        <TextBox TextWrapping="Wrap" Width="200" Name="TextBoxReceiptText" TextChanged="FilterResults_TextChanged"/>
                         <Label Content="Price: $"/>
                         <TextBox TextWrapping="Wrap" Width="60" Name="TextBoxPrice" TextChanged="FilterResults_TextChanged"/>
                         <Label Content="Quantity:"/>
